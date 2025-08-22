@@ -13,7 +13,13 @@ class CitiesAdapter(
 
     inner class CityViewHolder(
         val txtCityTitle : TextView
-    ) : ViewHolder(txtCityTitle)
+    ) : ViewHolder(txtCityTitle) {
+        init {
+            txtCityTitle.setOnClickListener {
+                Toast.makeText(it.context, "City ${cities[adapterPosition]} clicked...", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
     override fun getItemCount() = cities.size
 
@@ -37,9 +43,9 @@ class CitiesAdapter(
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         holder.txtCityTitle.text = cities[position]
 
-        holder.txtCityTitle.setOnClickListener {
+       /* holder.txtCityTitle.setOnClickListener {
             Toast.makeText(holder.txtCityTitle.context, "${cities[position]} City clicked...", Toast.LENGTH_LONG).show()
-        }
+        }*/
     }
 
 }
